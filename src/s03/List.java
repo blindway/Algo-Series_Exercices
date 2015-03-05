@@ -13,6 +13,10 @@ public class List {
 	  public int size() {
 	    return 0; //TODO - A COMPLETER...
 	  }
+	  
+	  public void  jo(){
+	    
+	  }
 
 	  // ==================================================
 	  // === Small Test Program ===
