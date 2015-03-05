@@ -13,10 +13,20 @@ public class ListItr {
   // ----------------------------------------------------------
   public void insertAfter(int e) {
     ListNode aux = new ListNode(e, pred, succ);
-    if (list.isEmpty()){
+    if (pred == null) {
       list.first = aux;
+      succ.prev = aux;
+    } else {
+      pred.next = aux;
+      succ.prev = aux;
     }
-    list.last = aux;
+    if (succ == null) {
+      list.last = aux;
+      pred.next = aux;
+    } else {
+      pred.next = aux;
+      succ.prev = aux;
+    }
     list.size++;
     succ = aux;
     pred = aux.prev;
@@ -24,7 +34,7 @@ public class ListItr {
 
   // ----------------------------------------------------------
   public void removeAfter() {
-    
+
   }
 
   // ----------------------------------------------------------
