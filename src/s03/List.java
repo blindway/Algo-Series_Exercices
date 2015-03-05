@@ -16,11 +16,7 @@ public class List {
   }
 
   public int size() {
-    if (first.equals(null)) {
-      return 0;
-    } else {
-      return last.elt - first.elt;
-    }
+    return size;
   }
 
   // ==================================================
