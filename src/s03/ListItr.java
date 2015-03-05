@@ -13,7 +13,9 @@ public class ListItr {
   // ----------------------------------------------------------
   public void insertAfter(int e) {
     ListNode aux = new ListNode(e, pred, succ);
-    list.first = aux;
+    if (list.isEmpty()){
+      list.first = aux;
+    }
     list.last = aux;
     list.size++;
     succ = aux;
@@ -22,7 +24,7 @@ public class ListItr {
 
   // ----------------------------------------------------------
   public void removeAfter() {
-    // TODO - A COMPLETER
+    
   }
 
   // ----------------------------------------------------------
