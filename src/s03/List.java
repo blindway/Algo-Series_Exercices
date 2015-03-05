@@ -56,6 +56,7 @@ public class List {
     }
     if (!li.isLast())
       return true;
+
     li.goToFirst();
     li.removeAfter();
     li.goToNext();

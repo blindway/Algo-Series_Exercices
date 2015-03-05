@@ -33,14 +33,19 @@ public class ListItr {
 
   // ----------------------------------------------------------
   public void removeAfter() {
-    if (pred == null && succ != null) {
-
-    } else if (pred == null && succ == null) {
-
-    } else if (pred != null && succ == null) {
-
-    } else {
-
+    if (pred == null && succ != null && succ.next != null) {
+      succ.next.prev = null;
+      list.first = succ.next;
+    } else if (pred == null && succ != null && succ.next == null) {
+      list.first = null;
+      list.last = null;
+      succ = null;
+    } else if (pred != null && succ != null && succ.next != null) {
+      succ.next.prev = pred;
+      pred.next = succ.next;
+    } else if (pred != null && succ != null && succ.next == null) {
+      list.last = pred;
+      pred.next = null;
     }
     list.size--;
   }
