@@ -13,14 +13,13 @@ public class ListItr {
   // ----------------------------------------------------------
   public void insertAfter(int e) {
     ListNode aux = new ListNode(e, pred, succ);
-    if (pred == null) {
+    if (pred == null && succ != null) {
       list.first = aux;
       succ.prev = aux;
-    } else {
-      pred.next = aux;
-      succ.prev = aux;
-    }
-    if (succ == null) {
+    } else if (pred == null && succ == null) {
+      list.first = aux;
+      list.last = aux;
+    } else if (pred != null && succ == null) {
       list.last = aux;
       pred.next = aux;
     } else {
