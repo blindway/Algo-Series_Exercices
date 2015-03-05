@@ -33,7 +33,16 @@ public class ListItr {
 
   // ----------------------------------------------------------
   public void removeAfter() {
+    if (pred == null && succ != null) {
 
+    } else if (pred == null && succ == null) {
+
+    } else if (pred != null && succ == null) {
+
+    } else {
+
+    }
+    list.size--;
   }
 
   // ----------------------------------------------------------
