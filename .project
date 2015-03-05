@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/s02/WhatComplexity.jar</name>
-			<type>1</type>
-			<locationURI>PROJECT_LOC/bin/s02/WhatComplexity.jar</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
