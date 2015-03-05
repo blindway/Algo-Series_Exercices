@@ -2,10 +2,10 @@ package s03;
 
 public class List {
 	  ListNode first, last;
-	  //TODO - A COMPLETER...
+	  int size;
 	  // --------------------
 	  public         List() {
-	    //TODO - A COMPLETER...
+	    size = 0;
 	  } 
 	  public boolean isEmpty() {
 	    return size() == 0; 
