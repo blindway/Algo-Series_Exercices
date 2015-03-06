@@ -13,13 +13,13 @@ public class ListItr {
   // ----------------------------------------------------------
   public void insertAfter(int e) {
     ListNode aux = new ListNode(e, pred, succ);
-    if (pred == null && succ != null) {
+    if (isFirst() && !isLast()) {
       list.first = aux;
       succ.prev = aux;
-    } else if (pred == null && succ == null) {
+    } else if (isFirst() && isLast()) {
       list.first = aux;
       list.last = aux;
-    } else if (pred != null && succ == null) {
+    } else if (!isFirst() && isLast()) {
       list.last = aux;
       pred.next = aux;
     } else {
@@ -33,17 +33,17 @@ public class ListItr {
 
   // ----------------------------------------------------------
   public void removeAfter() {
-    if (pred == null && succ != null && succ.next != null) {
+    if (isFirst() && !isLast() && succ.next != null) {
       succ.next.prev = null;
       list.first = succ.next;
-    } else if (pred == null && succ != null && succ.next == null) {
+    } else if (isFirst() && !isLast() && succ.next == null) {
       list.first = null;
       list.last = null;
       succ = null;
-    } else if (pred != null && succ != null && succ.next != null) {
+    } else if (!isFirst() && !isLast() && succ.next != null) {
       succ.next.prev = pred;
       pred.next = succ.next;
-    } else if (pred != null && succ != null && succ.next == null) {
+    } else if (!isFirst() && !isLast() && succ.next == null) {
       list.last = pred;
       pred.next = null;
     }
