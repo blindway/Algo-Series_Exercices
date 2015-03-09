@@ -23,5 +23,6 @@ public class AmStramGram {
 	public static void main(String[] args) {
 
 		System.out.println(winnerAmStramGram(5, 34));
+		System.out.println(winnerAmStramGram(14, 2));
 	}
 }
