@@ -49,7 +49,23 @@ public class Sorting {
 
 	// ------------------------------------------------------------
 	public static void shellSort(int[] a) {
-		// TODO - A COMPLETER !
+		int longueur = a.length;
+		int k = 0;
+		while (k < longueur) {
+			k = 3 * k + 1;
+		}
+		while (k != 0) {
+			k = k / 3;
+			for (int i = k; i < longueur; i++) {
+				int valeur = a[i];
+				int j = i;
+				while ((j > (k - 1)) && (a[j - k] > valeur)) {
+					a[j] = a[j - k];
+					j = j - k;
+				}
+				a[j] = valeur;
+			}
+		}
 	}
 
 	// ------------------------------------------------------------
