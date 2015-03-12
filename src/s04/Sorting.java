@@ -19,7 +19,32 @@ public class Sorting {
 
 	// ------------------------------------------------------------
 	public static void selectionSort(int[] a) {
-		// TODO - A COMPLETER !
+		// Défini la taille du tableau
+		int taille = a.length;
+		// tant qu'il reste des éléments non triés
+		for (; taille > 0; taille--) {
+			int max = 0;
+			int i = 0;
+			int tmp = 0;
+
+			// On cherche le plus grand
+			while (i < taille) {
+				if (a[i] > a[max]) {
+					max = i;
+				}
+				i++;
+			}
+
+			// On inverse le plus grand avec le dernier du tableau
+			tmp = a[taille - 1];
+			a[taille - 1] = a[max];
+			a[max] = tmp;
+		}
+
+		// Affiche le tableau trié
+		for (int j2 = 0; j2 < a.length; j2++) {
+			System.out.println(a[j2]);
+		}
 	}
 
 	// ------------------------------------------------------------
