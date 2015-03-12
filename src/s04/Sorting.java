@@ -2,8 +2,8 @@ package s04;
 
 public class Sorting {
 	public static void main(String[] args) {
-		int[] t = { 4, 3, 2, 6, 8, 7 };
-		int[] u = { 2, 3, 4, 6, 7, 8 };
+		int[] t = { 4, 3, 2, 6, 8, 7, 9, 1 };
+		int[] u = { 1,a2, 3, 4, 6, 7, 8, 9 };
 		insertionSort(t);
 		for (int i = 0; i < t.length; i++)
 			if (t[i] != u[i]) {
@@ -12,7 +12,7 @@ public class Sorting {
 			}
 		shellSort(t);
 		for (int i = 0; i < t.length; i++) {
-			if ((t[i] != u[i])){
+			if ((t[i] != u[i])) {
 				System.out.println("Something is wrong with shellSort...");
 				return;
 			}
