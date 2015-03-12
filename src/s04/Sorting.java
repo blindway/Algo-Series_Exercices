@@ -7,13 +7,22 @@ public class Sorting {
 		insertionSort(t);
 		for (int i = 0; i < t.length; i++)
 			if (t[i] != u[i]) {
-				System.out.println("Something is wrong...");
+				System.out.println("Something is wrong with insertionSort...");
 				return;
 			}
+		shellSort(t);
+		for (int i = 0; i < t.length; i++) {
+			if ((t[i] != u[i])){
+				System.out.println("Something is wrong with shellSort...");
+				return;
+			}
+		}
 		int[] v = { 5 };
 		insertionSort(v);
+		shellSort(v);
 		int[] w = {};
 		insertionSort(w);
+		shellSort(w);
 		System.out.println("\nMini-test passed successfully...");
 	}
 
@@ -26,7 +35,6 @@ public class Sorting {
 			int max = 0;
 			int i = 0;
 			int tmp = 0;
-
 			// On cherche le plus grand
 			while (i < taille) {
 				if (a[i] > a[max]) {
@@ -34,13 +42,11 @@ public class Sorting {
 				}
 				i++;
 			}
-
 			// On inverse le plus grand avec le dernier du tableau
 			tmp = a[taille - 1];
 			a[taille - 1] = a[max];
 			a[max] = tmp;
 		}
-
 		// Affiche le tableau trié
 		for (int j2 = 0; j2 < a.length; j2++) {
 			System.out.println(a[j2]);
