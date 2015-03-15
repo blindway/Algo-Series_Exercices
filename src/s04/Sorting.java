@@ -1,5 +1,8 @@
 package s04;
 
+import s03.List;
+import s03.ListItr;
+
 public class Sorting {
 	public static void main(String[] args) {
 		int[] t = { 4, 3, 2, 6, 8, 7, 9, 1 };
@@ -89,4 +92,18 @@ public class Sorting {
 		}
 	}
 	// ------------------------------------------------------------
+	static void bubbleSortList (List l){
+		if (l.isEmpty()) return;
+		ListItr li = new ListItr(l);
+		boolean goOn=true;
+		while(goOn){
+			// TODO ...
+		}
+	}
+	//Swaps between left and right element if needed
+	//Returns true is swap occurred
+	private static boolean bubbleSwapped(ListItr li){
+		if (li.isFirst() || li.isLast() ) return false;
+		// TODO ...
+	}
 }
