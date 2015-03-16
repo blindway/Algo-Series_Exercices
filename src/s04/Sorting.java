@@ -6,7 +6,7 @@ import s03.ListItr;
 public class Sorting {
 	public static void main(String[] args) {
 		int[] t = { 4, 3, 2, 6, 8, 7, 9, 1 };
-		int[] u = { 1,a2, 3, 4, 6, 7, 8, 9 };
+		int[] u = { 1,2, 3, 4, 6, 7, 8, 9 };
 		insertionSort(t);
 		for (int i = 0; i < t.length; i++)
 			if (t[i] != u[i]) {
