@@ -6,7 +6,7 @@ import s03.ListItr;
 public class Sorting {
 	public static void main(String[] args) {
 		int[] t = { 4, 3, 2, 6, 8, 7, 9, 1 };
-		int[] u = { 1, 2, 3, 4, 6, 7, 8, 9 };
+		int[] u = { 1,a2, 3, 4, 6, 7, 8, 9 };
 		insertionSort(t);
 		for (int i = 0; i < t.length; i++)
 			if (t[i] != u[i]) {
@@ -91,23 +91,19 @@ public class Sorting {
 			a[j] = v; // insert the element
 		}
 	}
-
 	// ------------------------------------------------------------
-	static void bubbleSortList(List l) {
-		if (l.isEmpty())
-			return;
+	static void bubbleSortList (List l){
+		if (l.isEmpty()) return;
 		ListItr li = new ListItr(l);
-		boolean goOn = true;
-		while (goOn) {
+		boolean goOn=true;
+		while(goOn){
 			// TODO ...
 		}
 	}
-
-	// Swaps between left and right element if needed
-	// Returns true is swap occurred
-	private static boolean bubbleSwapped(ListItr li) {
-		if (li.isFirst() || li.isLast())
-			return false;
+	//Swaps between left and right element if needed
+	//Returns true is swap occurred
+	private static boolean bubbleSwapped(ListItr li){
+		if (li.isFirst() || li.isLast() ) return false;
 		// TODO ...
 	}
 }
