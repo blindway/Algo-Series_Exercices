@@ -75,12 +75,17 @@ public class FractalCurve {
 		return n * fact(n - 1);
 	}
 
+	public static int modulo() {
+
+		return 0;
+	}
+
 	// ----------------------------------------------------------------------------
 	public static void main(String[] args) {
 		if (args.length == 1)
 			maxLevels = Integer.parseInt(args[0]);
 		new FractalCurve();
-		
+
 		System.out.println(fact(4));
 	}
 
