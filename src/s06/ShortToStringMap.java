@@ -1,10 +1,13 @@
 package s06;
 
+import java.util.HashMap;
+
 public class ShortToStringMap {
 	private int size;
 
 	private int tabK[];
 	private String tabV[];
+	private HashMap<Integer, String> dico;
 
 	private int pos = 1;
 
@@ -21,7 +24,6 @@ public class ShortToStringMap {
 	private int getPosOfKey(short key) {
 
 		for (int i = 0; i < tabK.length; i++) {
-
 			if (tabK[i] == key) {
 				return i;
 			}
@@ -34,9 +36,7 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-
-		SetOfShorts dico = new SetOfShorts();
-
+		dico = new HashMap<Integer, String>();
 	}
 
 	// ------------------------------------------------------------
@@ -51,7 +51,7 @@ public class ShortToStringMap {
 			tabV[pos] = img;
 			pos++;
 		}
-		
+
 		size++;
 
 	}
@@ -71,25 +71,20 @@ public class ShortToStringMap {
 
 	// ------------------------------------------------------------
 	public void remove(short e) {
-
 		int x = getPosOfKey(e);
 		tabV[x] = "";
 		tabK[x] = 0;
 		size--;
-
 	}
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-
 		for (int i = 0; i < tabK.length; i++) {
-
 			if (tabK[i] == k) {
 				return true;
 			}
 		}
 		return false;
-
 	}
 
 	// ------------------------------------------------------------
