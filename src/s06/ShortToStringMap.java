@@ -79,26 +79,26 @@ public class ShortToStringMap {
 	}
 
 	// ------------------------------------------------------------
-	public void remove(short e) {
-
-		int x = getPosOfKey(e);
-		tabValue[x] = "";
-		tabKey[x] = 0;
-		size--;
-
+	public void remove(short key) {
+		if (containsKey(key)){
+			
+			//créer tableaux plus petits de 1
+			// copier les valeurs
+			//écrase la valeur Key avec la dernière du tableau
+			//Associer les tableaux de la classe avec les nouveaux
+			
+			size--;
+		}
 	}
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-
 		for (int i = 0; i < tabKey.length; i++) {
-
 			if (tabKey[i] == k) {
 				return true;
 			}
 		}
 		return false;
-
 	}
 
 	// ------------------------------------------------------------
