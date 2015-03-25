@@ -1,6 +1,6 @@
 package s05;
 
-// import proglib.TurtlePanel;
+// import s05.TurtlePanel;
 
 public class FractalCurve {
 
@@ -14,9 +14,9 @@ public class FractalCurve {
 	private static final int startX = HMargin / 2;
 	private static final int startY = panelHeight / 2;
 
-	private static int maxLevels = 4;
+	private static int maxLevels = 2;
 
-	private static int[] pattern = { A, R, A, L, A, L, A, A, R, A, R, A, L, A };
+	private static int[] pattern = { A, A, L, A, A, R, A, A, R, A, A, L, A, A };
 
 	private TurtlePanel t;
 	private double scaleFactor = Math.pow(getStraightAdvance(), maxLevels);
@@ -28,6 +28,7 @@ public class FractalCurve {
 		t = TurtlePanel.create("Fractal Curve", panelWidth, panelHeight,
 				startX, startY, true);
 		drawPattern(maxLevels);
+		// drawPattern(1);
 	}
 
 	// ----------------------------------------------------------------------------
@@ -40,7 +41,21 @@ public class FractalCurve {
 
 	// ----------------------------------------------------------------------------
 	public void drawPattern(int level) {
-		// A COMPLETER !
+		for (int i = 0; i < pattern.length; i++) {
+			switch (pattern[i]) {
+			case R:
+				t.turnRight();
+				break;
+			case L:
+				t.turnLeft();
+				break;
+			case A:
+				if (level == 1)
+					t.advance(baseDist);
+				else drawPattern(level-1);
+				break;
+			}
+		}
 	}
 
 	// ----------------------------------------------------------------------------
@@ -75,9 +90,31 @@ public class FractalCurve {
 		return n * fact(n - 1);
 	}
 
-	public static int modulo() {
+	public static int modulo(int val, int divisor) {
+		if (val < divisor)
+			return val;
+		return modulo(val - divisor, divisor);
+	}
 
-		return 0;
+	public static int nbrDe1(int n) {
+		if (n == 0)
+			return 0;
+		else
+			return ((n % 2) + nbrDe1(n / 2));
+	}
+
+	public static int fib(int n) {
+		if (n == 0)
+			return 0;
+		if (n == 1)
+			return 1;
+		return fib(n - 1) + fib(n - 2);
+	}
+
+	public static int auCarre(int n) {
+		if (n == 0)
+			return 0;
+		return auCarre(n - 1) + 2 * n - 1;
 	}
 
 	// ----------------------------------------------------------------------------
@@ -87,6 +124,10 @@ public class FractalCurve {
 		new FractalCurve();
 
 		System.out.println(fact(4));
+
+		System.out.println(modulo(5, 2));
+
+		System.out.println(nbrDe1(7));
 	}
 
 }
