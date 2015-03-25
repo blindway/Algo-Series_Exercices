@@ -1,6 +1,12 @@
 package s06;
 public class ShortToStringMap {
   private int size;
+  
+  private int tabK[];
+  private String tabV[];
+  
+  private int pos = 1;
+  
   // TODO - A COMPLETER...
   //------------------------------
   //  Private methods
@@ -10,31 +16,78 @@ public class ShortToStringMap {
   // - one method to detect and handle the "array is full" situation
   // - one method to locate a key in the array 
   //   (to be called from containsKey(), put(), and remove())
+  
+  private int getPosOfKey(short key){
+	 
+	  for (int i = 0; i < tabK.length; i++) {
+		
+		  if(tabK[i] == key){
+			  return i;
+		  }
+	}
+	  
+	  return -1;  
+  }
+  
 
   //------------------------------
   //  Public methods
   //------------------------------
   // ------------------------------------------------------------
   public ShortToStringMap () {
-    // TODO - A COMPLETER...
+	  
+	  SetOfShorts dico = new SetOfShorts();
   }
+  
   // ------------------------------------------------------------
   // adds an entry in the map, or updates the image
   public void    put     (short key, String img) {
-    // TODO - A COMPLETER...
+	  
+	  if(containsKey(key)){
+		  int x = getPosOfKey(key);
+		  tabV[x] = img;
+	  }
+	  else
+	  {
+		  tabK[pos] = key;
+		  tabV[pos] = img;
+		  pos++;
+	  }
+	  
   } 
   // ------------------------------------------------------------
   // returns null if !containsKey(key)
   public String  get     (short key) {
-    return null; // TODO - A COMPLETER...
+    
+	  if(!containsKey(key)){
+		  return "null";
+	  }
+	  else
+	  {
+		  int x = getPosOfKey(key);
+		  return tabV[x];
+	  }
+	  
   }
   // ------------------------------------------------------------
   public void    remove  (short e) { 
-    // TODO - A COMPLETER...
+	  
+	  int x = getPosOfKey(e);
+	  tabV[x] = "";
+	  tabK[x] = 0;
+	  
   }
   // ------------------------------------------------------------
   public boolean containsKey(short k) {
-    return false; // TODO - A COMPLETER...
+	  
+    for (int i = 0; i < tabK.length; i++) {
+    	
+		if (tabK[i] == k) {
+			return true;
+		}
+	}
+	return false;
+    
   }
   // ------------------------------------------------------------
   public boolean isEmpty() { return size() == 0; }
