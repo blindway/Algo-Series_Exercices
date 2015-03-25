@@ -1,13 +1,10 @@
 package s06;
 
-import java.util.HashMap;
-
 public class ShortToStringMap {
 	private int size;
 
-	private int tabK[];
-	private String tabV[];
-	private HashMap<Integer, String> dico;
+	private int tabKey[];
+	private String tabValue[];
 
 	private int pos = 1;
 
@@ -23,8 +20,9 @@ public class ShortToStringMap {
 
 	private int getPosOfKey(short key) {
 
-		for (int i = 0; i < tabK.length; i++) {
-			if (tabK[i] == key) {
+		for (int i = 0; i < tabKey.length; i++) {
+
+			if (tabKey[i] == key) {
 				return i;
 			}
 		}
@@ -36,7 +34,8 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-		dico = new HashMap<Integer, String>();
+		tabKey = new 
+
 	}
 
 	// ------------------------------------------------------------
@@ -45,13 +44,13 @@ public class ShortToStringMap {
 
 		if (containsKey(key)) {
 			int x = getPosOfKey(key);
-			tabV[x] = img;
+			tabValue[x] = img;
 		} else {
-			tabK[pos] = key;
-			tabV[pos] = img;
+			tabKey[pos] = key;
+			tabValue[pos] = img;
 			pos++;
 		}
-
+		
 		size++;
 
 	}
@@ -64,27 +63,32 @@ public class ShortToStringMap {
 			return "null";
 		} else {
 			int x = getPosOfKey(key);
-			return tabV[x];
+			return tabValue[x];
 		}
 
 	}
 
 	// ------------------------------------------------------------
 	public void remove(short e) {
+
 		int x = getPosOfKey(e);
-		tabV[x] = "";
-		tabK[x] = 0;
+		tabValue[x] = "";
+		tabKey[x] = 0;
 		size--;
+
 	}
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-		for (int i = 0; i < tabK.length; i++) {
-			if (tabK[i] == k) {
+
+		for (int i = 0; i < tabKey.length; i++) {
+
+			if (tabKey[i] == k) {
 				return true;
 			}
 		}
 		return false;
+
 	}
 
 	// ------------------------------------------------------------
