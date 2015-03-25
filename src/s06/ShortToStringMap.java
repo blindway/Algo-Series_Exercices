@@ -6,7 +6,7 @@ public class ShortToStringMap {
 	private int tabKey[];
 	private String tabValue[];
 
-	private int pos = 1;
+	private int pos = 0;
 
 	// TODO - A COMPLETER...
 	// ------------------------------
@@ -34,8 +34,9 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-		tabKey = new 
-
+		tabKey = new int[0];
+		tabValue = new String[0];
+		size = 0;
 	}
 
 	// ------------------------------------------------------------
@@ -46,13 +47,22 @@ public class ShortToStringMap {
 			int x = getPosOfKey(key);
 			tabValue[x] = img;
 		} else {
-			tabKey[pos] = key;
-			tabValue[pos] = img;
-			pos++;
-		}
-		
-		size++;
+			int newTabK[] = new int[tabKey.length + 1];
+			String newTabV[] = new String[tabValue.length + 1];
 
+			for (int i = 0; i < tabKey.length; i++) {
+				newTabK[i] = tabKey[i];
+			}
+			for (int i = 0; i < tabValue.length; i++) {
+				newTabV[i] = tabValue[i];
+			}
+			newTabK[newTabK.length-1] = key;
+			newTabV[newTabV.length-1] = img;
+			
+			tabKey = newTabK;
+			tabValue = newTabV;
+			size++;
+		}
 	}
 
 	// ------------------------------------------------------------
