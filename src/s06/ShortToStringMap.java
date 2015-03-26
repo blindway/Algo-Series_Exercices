@@ -6,7 +6,7 @@ public class ShortToStringMap {
 	private int tabKey[];
 	private String tabValue[];
 
-	private int pos = 0;
+	private int pos = 1;
 
 	// TODO - A COMPLETER...
 	// ------------------------------
@@ -20,7 +20,7 @@ public class ShortToStringMap {
 
 	private int getPosOfKey(short key) {
 
-		for (int i = 0; i < tabKey.length; i++) {
+		for (int i = 0; i < size; i++) {
 
 			if (tabKey[i] == key) {
 				return i;
@@ -34,8 +34,8 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-		tabKey = new int[10];
-		tabValue = new String[10];
+		tabKey = new int[1];
+		tabValue = new String[1];
 		size = 0;
 	}
 
@@ -63,8 +63,8 @@ public class ShortToStringMap {
 			tabValue = newTabV;
 			size++;
 		} else {
-			tabKey[size + 1] = key;
-			tabValue[size + 1] = img;
+			tabKey[size] = key;
+			tabValue[size] = img;
 			size++;
 		}
 
@@ -86,19 +86,17 @@ public class ShortToStringMap {
 	// ------------------------------------------------------------
 	public void remove(short key) {
 		if (containsKey(key)) {
-
-			// créer tableaux plus petits de 1
-			// copier les valeurs
-			// écrase la valeur Key avec la dernière du tableau
-			// Associer les tableaux de la classe avec les nouveaux
-
+			tabKey[key] = tabKey[size - 1];
+			tabValue[getPosOfKey(key)] = tabValue[size - 1];
+			tabKey[size - 1] = 0;
+			tabValue[size - 1] = null;
 			size--;
 		}
 	}
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-		for (int i = 0; i < tabKey.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (tabKey[i] == k) {
 				return true;
 			}
@@ -133,6 +131,11 @@ public class ShortToStringMap {
 	// a.toString() returns all elements in
 	// a string like: {3:"abc",9:"xy",-5:"jk"}
 	public String toString() {
-		return null;
+		String resultat= "";
+		for (int i = 0; i < size; i++) {
+			resultat+= tabKey[i] +"="+tabValue[i]+",";
+		}
+		
+		return "{"+resultat+"}";
 	}
 }
