@@ -34,8 +34,8 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-		tabKey = new int[1];
-		tabValue = new String[1];
+		tabKey = new int[2];
+		tabValue = new String[2];
 		size = 0;
 	}
 
