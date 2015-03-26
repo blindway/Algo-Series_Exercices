@@ -19,9 +19,7 @@ public class ShortToStringMap {
 	// (to be called from containsKey(), put(), and remove())
 
 	private int getPosOfKey(short key) {
-
 		for (int i = 0; i < size; i++) {
-
 			if (tabKey[i] == key) {
 				return i;
 			}
@@ -80,16 +78,13 @@ public class ShortToStringMap {
 			int x = getPosOfKey(key);
 			return tabValue[x];
 		}
-
 	}
 
 	// ------------------------------------------------------------
 	public void remove(short key) {
 		if (containsKey(key)) {
-			tabKey[key] = tabKey[size - 1];
+			tabKey[getPosOfKey(key)] = tabKey[size - 1];
 			tabValue[getPosOfKey(key)] = tabValue[size - 1];
-			tabKey[size - 1] = 0;
-			tabValue[size - 1] = null;
 			size--;
 		}
 	}
