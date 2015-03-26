@@ -117,14 +117,24 @@ public class ShortToStringMap {
 	// a.union(b) : a becomes "a union b"
 	// images are those in b whenever possible
 	public void union(ShortToStringMap m) {
-		// TODO - A COMPLETER...
+
+		for (int i = 0; i < m.tabKey.length; i++) {
+			if (!(this.containsKey((short) (m.tabKey[i])))) {
+				this.put((short) m.tabKey[i], m.tabValue[i]);
+			}
+		}
 	}
 
 	// ------------------------------------------------------------
 	// a.intersection(b) : "a becomes a intersection b"
 	// images are those in b
 	public void intersection(ShortToStringMap s) {
-		// TODO - A COMPLETER...
+
+		for (int i = 0; i < this.tabKey.length; i++) {
+			if (s.containsKey((short) this.tabKey[i])) {
+				this.remove((short) this.tabKey[i]);
+			}
+		}
 	}
 
 	// ------------------------------------------------------------
