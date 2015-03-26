@@ -19,7 +19,6 @@ public class ShortToStringMap {
 	// (to be called from containsKey(), put(), and remove())
 
 	private int getPosOfKey(short key) {
-
 		for (int i = 0; i < size; i++) {
 
 			if (tabKey[i] == key) {
@@ -29,6 +28,13 @@ public class ShortToStringMap {
 		return -1;
 	}
 
+	// ------------------------------------------------------------
+	public boolean containsKey(short k) {
+		if(getPosOfKey(k) != -1) return true;
+		return false;
+	}
+
+	
 	// ------------------------------
 	// Public methods
 	// ------------------------------
@@ -47,17 +53,15 @@ public class ShortToStringMap {
 			int x = getPosOfKey(key);
 			tabValue[x] = img;
 		} else if (size == tabKey.length) {
-			int newTabK[] = new int[tabKey.length * 2];
-			String newTabV[] = new String[tabValue.length * 2];
+			int newTabK[] = new int[size * 2];
+			String newTabV[] = new String[size * 2];
 
-			for (int i = 0; i < tabKey.length; i++) {
+			for (int i = 0; i < size; i++) {
+				newTabV[i] = tabValue[i];
 				newTabK[i] = tabKey[i];
 			}
-			for (int i = 0; i < tabValue.length; i++) {
-				newTabV[i] = tabValue[i];
-			}
-			newTabK[size + 1] = key;
-			newTabV[size + 1] = img;
+			newTabK[size] = key;
+			newTabV[size] = img;
 
 			tabKey = newTabK;
 			tabValue = newTabV;
@@ -86,23 +90,13 @@ public class ShortToStringMap {
 	// ------------------------------------------------------------
 	public void remove(short key) {
 		if (containsKey(key)) {
-			tabKey[key] = tabKey[size - 1];
-			tabValue[getPosOfKey(key)] = tabValue[size - 1];
-			tabKey[size - 1] = 0;
-			tabValue[size - 1] = null;
+			int pos = getPosOfKey(key);
+			tabKey[pos] = tabKey[size-1];
+			tabValue[pos] = tabValue[size-1];
 			size--;
 		}
 	}
 
-	// ------------------------------------------------------------
-	public boolean containsKey(short k) {
-		for (int i = 0; i < size; i++) {
-			if (tabKey[i] == k) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	// ------------------------------------------------------------
 	public boolean isEmpty() {
@@ -141,11 +135,11 @@ public class ShortToStringMap {
 	// a.toString() returns all elements in
 	// a string like: {3:"abc",9:"xy",-5:"jk"}
 	public String toString() {
-		String resultat= "";
+		String resultat = "";
 		for (int i = 0; i < size; i++) {
-			resultat+= tabKey[i] +"="+tabValue[i]+",";
+			resultat += tabKey[i] + "=" + tabValue[i] + ",";
 		}
-		
-		return "{"+resultat+"}";
+
+		return "{" + resultat + "}";
 	}
 }
