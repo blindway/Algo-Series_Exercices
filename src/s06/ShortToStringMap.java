@@ -34,8 +34,8 @@ public class ShortToStringMap {
 	// ------------------------------
 	// ------------------------------------------------------------
 	public ShortToStringMap() {
-		tabKey = new int[0];
-		tabValue = new String[0];
+		tabKey = new int[10];
+		tabValue = new String[10];
 		size = 0;
 	}
 
@@ -46,9 +46,9 @@ public class ShortToStringMap {
 		if (containsKey(key)) {
 			int x = getPosOfKey(key);
 			tabValue[x] = img;
-		} else {
-			int newTabK[] = new int[tabKey.length + 1];
-			String newTabV[] = new String[tabValue.length + 1];
+		} else if (size == tabKey.length) {
+			int newTabK[] = new int[tabKey.length * 2];
+			String newTabV[] = new String[tabValue.length * 2];
 
 			for (int i = 0; i < tabKey.length; i++) {
 				newTabK[i] = tabKey[i];
@@ -56,13 +56,18 @@ public class ShortToStringMap {
 			for (int i = 0; i < tabValue.length; i++) {
 				newTabV[i] = tabValue[i];
 			}
-			newTabK[newTabK.length-1] = key;
-			newTabV[newTabV.length-1] = img;
-			
+			newTabK[size + 1] = key;
+			newTabV[size + 1] = img;
+
 			tabKey = newTabK;
 			tabValue = newTabV;
 			size++;
+		} else {
+			tabKey[size + 1] = key;
+			tabValue[size + 1] = img;
+			size++;
 		}
+
 	}
 
 	// ------------------------------------------------------------
@@ -80,13 +85,13 @@ public class ShortToStringMap {
 
 	// ------------------------------------------------------------
 	public void remove(short key) {
-		if (containsKey(key)){
-			
-			//créer tableaux plus petits de 1
+		if (containsKey(key)) {
+
+			// créer tableaux plus petits de 1
 			// copier les valeurs
-			//écrase la valeur Key avec la dernière du tableau
-			//Associer les tableaux de la classe avec les nouveaux
-			
+			// écrase la valeur Key avec la dernière du tableau
+			// Associer les tableaux de la classe avec les nouveaux
+
 			size--;
 		}
 	}
