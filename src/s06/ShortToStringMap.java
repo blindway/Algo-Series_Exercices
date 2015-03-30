@@ -124,11 +124,8 @@ public class ShortToStringMap {
             if (!s.containsKey((short) getPosOfKey((short) tabKey[i]))) {
                 remove((short) getPosOfKey((short) tabKey[i]));
                 i--;
-            }
-        }
-        for (int i = 0; i < s.size; i++) {
-            if (containsKey((short) getPosOfKey((short) s.tabKey[i]))) {
-                put((short) s.tabKey[i], s.tabValue[i]);
+            }else{
+            	put((short) s.tabKey[i], s.tabValue[i]);
             }
         }
     }
