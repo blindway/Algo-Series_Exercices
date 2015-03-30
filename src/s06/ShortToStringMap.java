@@ -111,8 +111,7 @@ public class ShortToStringMap {
 	// a.union(b) : a becomes "a union b"
 	// images are those in b whenever possible
 	public void union(ShortToStringMap m) {
-
-		for (int i = 0; i < m.tabKey.length; i++) {
+		for (int i = 0; i < m.size; i++) {
 				this.put((short) m.tabKey[i], m.tabValue[i]);
 			}
 	}
