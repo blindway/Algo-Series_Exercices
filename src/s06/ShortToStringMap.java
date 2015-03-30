@@ -18,7 +18,7 @@ public class ShortToStringMap {
 	// - one method to locate a key in the array
 	// (to be called from containsKey(), put(), and remove())
 
-	private int getPosOfKey(short key) {
+	 int getPosOfKey(short key) {
 		for (int i = 0; i < size; i++) {
 			if (tabKey[i] == key) {
 				return i;
@@ -29,11 +29,11 @@ public class ShortToStringMap {
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-		if(getPosOfKey(k) != -1) return true;
+		if (getPosOfKey(k) != -1)
+			return true;
 		return false;
 	}
 
-	
 	// ------------------------------
 	// Public methods
 	// ------------------------------
@@ -89,14 +89,13 @@ public class ShortToStringMap {
 	public void remove(short key) {
 		if (containsKey(key)) {
 			int pos = getPosOfKey(key);
-			tabKey[pos] = tabKey[size-1];
-			tabValue[pos] = tabValue[size-1];
+			tabKey[pos] = tabKey[size - 1];
+			tabValue[pos] = tabValue[size - 1];
 			tabKey[pos] = tabKey[size - 1];
 			tabValue[pos] = tabValue[size - 1];
 			size--;
 		}
 	}
-
 
 	// ------------------------------------------------------------
 	public boolean isEmpty() {
@@ -112,28 +111,26 @@ public class ShortToStringMap {
 	// images are those in b whenever possible
 	public void union(ShortToStringMap m) {
 		for (int i = 0; i < m.size; i++) {
-				this.put((short) m.tabKey[i], m.tabValue[i]);
-			}
+			this.put((short) m.tabKey[i], m.tabValue[i]);
+		}
 	}
 
 	// ------------------------------------------------------------
 	// a.intersection(b) : "a becomes a intersection b"
 	// images are those in b
-    public void intersection(ShortToStringMap s) {
-        for (int i = 0; i < size; i++) {
-            if (!s.containsKey((short) getPosOfKey((short) tabKey[i]))) {
-                remove((short) getPosOfKey((short) tabKey[i]));
-                i--;
-            }else{
-            	put((short) s.tabKey[i], s.tabValue[i]);
-            }
-        }
-    }
+	public void intersection(ShortToStringMap s) {
+		for (int i = 0; i < this.size; i++) {
+			if (s.containsKey((short) tabKey[i])) {
+				put((short) s.tabKey[s.getPosOfKey((short) this.tabKey[i])],
+						s.tabValue[s.getPosOfKey((short) this.tabKey[i])]);
+			} else {
+				remove((short) tabKey[i]);
+			}
+		}
+	}// ------------------------------------------------------------
+		// a.toString() returns all elements in
+		// a string like: {3:"abc",9:"xy",-5:"jk"}
 
-
-	// ------------------------------------------------------------
-	// a.toString() returns all elements in
-	// a string like: {3:"abc",9:"xy",-5:"jk"}
 	public String toString() {
 		String resultat = "";
 		for (int i = 0; i < size; i++) {
