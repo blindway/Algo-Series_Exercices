@@ -105,6 +105,5 @@ public class Sorting {
 	private static boolean bubbleSwapped(ListItr li){
 		if (li.isFirst() || li.isLast() ) return false;
 		// TODO ...
-		return false;
 	}
 }

@@ -29,11 +29,11 @@ public class ShortToStringMap {
 
 	// ------------------------------------------------------------
 	public boolean containsKey(short k) {
-		if (getPosOfKey(k) != -1)
-			return true;
+		if(getPosOfKey(k) != -1) return true;
 		return false;
 	}
 
+	
 	// ------------------------------
 	// Public methods
 	// ------------------------------
@@ -88,12 +88,18 @@ public class ShortToStringMap {
 	// ------------------------------------------------------------
 	public void remove(short key) {
 		if (containsKey(key)) {
+<<<<<<< HEAD
 			int pos = getPosOfKey(key);
-			tabKey[pos] = tabKey[size - 1];
-			tabValue[pos] = tabValue[size - 1];
+			tabKey[pos] = tabKey[size-1];
+			tabValue[pos] = tabValue[size-1];
+=======
+			tabKey[getPosOfKey(key)] = tabKey[size - 1];
+			tabValue[getPosOfKey(key)] = tabValue[size - 1];
+>>>>>>> origin/master
 			size--;
 		}
 	}
+
 
 	// ------------------------------------------------------------
 	public boolean isEmpty() {
@@ -108,8 +114,11 @@ public class ShortToStringMap {
 	// a.union(b) : a becomes "a union b"
 	// images are those in b whenever possible
 	public void union(ShortToStringMap m) {
-		for (int i = 0; i < m.size; i++) {
-			this.put((short) m.tabKey[i], m.tabValue[i]);
+
+		for (int i = 0; i < m.tabKey.length; i++) {
+			if (!(this.containsKey((short) (m.tabKey[i])))) {
+				this.put((short) m.tabKey[i], m.tabValue[i]);
+			}
 		}
 	}
 
@@ -117,13 +126,10 @@ public class ShortToStringMap {
 	// a.intersection(b) : "a becomes a intersection b"
 	// images are those in b
 	public void intersection(ShortToStringMap s) {
-		int posi = 0;
-		for (int i = 0; i < this.size; i++) {
+
+		for (int i = 0; i < this.tabKey.length; i++) {
 			if (s.containsKey((short) this.tabKey[i])) {
-				posi = s.getPosOfKey((short) this.tabKey[i]);
-				this.put((short) s.tabKey[posi], s.tabValue[posi]);
-			} else {
-				this.remove((short) i);
+				this.remove((short) this.tabKey[i]);
 			}
 		}
 	}
