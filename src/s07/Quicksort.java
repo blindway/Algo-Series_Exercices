@@ -13,6 +13,14 @@ public class Quicksort {
   }
 //------------------------------------------------------------
   private static int partition (int [] t, int left, int right) {
+	  //choisir le premier élément comme pivot
+	  // pour chaque case suivante i de left+1 à right{
+	  //   si l'élément courant doit aller dans la partie grisée
+	  //     agrandir la partie grisée, en échangeant les cases k+1 et i
+	  //  }
+	  //mettre le pivot à la fin de la partie grisée
+	  //retourner la poistion de l'extrémité droite de la partie grisée
+	  
     return 0; // A COMPLETER
   }
 //------------------------------------------------------------
