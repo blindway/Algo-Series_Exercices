@@ -3,7 +3,7 @@ import java.io.*;
 
 public class ExternalSorting {
   public static void main(String [] args) {
-    String filename = "myFile.txt";
+    String filename = "myText.txt";
     if (args.length > 0) filename=args[0];
     mergeSort2(filename);
   }
@@ -34,22 +34,52 @@ public class ExternalSorting {
       }
     }
     fa.close(); fb.close(); fc.close();
-    // Un pseudo-code possible :
-    //  tant qu'il reste des éléments à traiter
-    //    si les 2 monotonies sont "en cours"
-    //      choisir le plus petit élément
-    //    si une des monotonies est terminée
-    //      prendre l'élément de l'autre
-    //    si les deux monotonies sont terminées
-    //      en commencer 2 nouvelles
   }
   // ------------------------------------------------------------
   private static int split(String a, String b, String c) throws IOException {
-    BufferedReader fa = new BufferedReader(new FileReader(a));
-    PrintWriter    fb = new PrintWriter   (new FileWriter(b));
-    PrintWriter    fc = new PrintWriter   (new FileWriter(c));
-    return 0; // TODO: A COMPLETER
-  }
+	    BufferedReader fa = new BufferedReader(new FileReader(a));
+	    PrintWriter    fb = new PrintWriter   (new FileWriter(b));
+	    PrintWriter    fc = new PrintWriter   (new FileWriter(c));
+	    
+	    String line;
+	    String linePrev = fa.readLine();
+	    boolean inB = true;
+	    int monotonieCount = 1;
+	    
+	    // test si c'est la 1Ã¨re ligne du fichier source
+	    if (linePrev != null){
+	      fb.println(linePrev);
+	    }
+	    
+	    // Lis toutes les lignes du fichier
+	    while((line = fa.readLine()) != null) {
+	      
+	      // si la ligne ne fait plus partie de la monotonie
+	      if(!isMonotone(line, linePrev)){
+	        inB = !inB;
+	        monotonieCount++;
+	      }
+	      
+	      // insertion de la ligne dans le fichier B ou C
+	      if(inB){
+	        fb.println(line);
+	      }else{
+	        fc.println(line);
+	      }
+	      
+	      // la ligne "courante" devient la ligne prÃ©cÃ©dente
+	      linePrev = line;
+	    
+	    }
+	    
+	    
+	    // fermeture des fichiers
+	    fa.close(); fb.close(); fc.close();
+	    
+	    return monotonieCount;
+	    
+	  }
+
   // ------------------------------------------------------------
   public static void mergeSort2(String filename) {
     String tmp1 = filename + ".tmp1"; // somewhat...

@@ -8,51 +8,28 @@ public class Quicksort {
 		for (int i = 0; i < t.length; i++)
 			if (t[i] != u[i]) {
 				System.out.println("Oups. Something is wrong...");
-				
-				for (int j = 0; j < t.length; j++) {
-					System.out.println(t[j]);
-				}
-				
 				System.exit(-1);
 			}
 		System.out.println("OK. Tiny test passed...");
 	}
 
-	// ------------------------------------------------------------
-
 	private static int partition(int[] t, int left, int right) {
-
-		int p = t[0];
-		int temp;
-		int mid = t.length / 2;
-
-		for (int i = 0; i < mid; i++) {
-			if (t[i] < p) {
-				temp = t[i];
-				t[i] = p;
-				t[i-1] = temp;
+		int pivot = t[left];
+		int k = left;
+		int ktemp;
+		int itemp;
+		for (int i = left + 1; i <= right; i++) {
+			if (t[left] > t[i]) {
+				ktemp = t[k + 1];
+				itemp = t[i];
+				t[k + 1] = itemp;
+				t[i] = ktemp;
+				k++;
 			}
 		}
-
-		p = t[t.length - 1];
-		for (int i = t.length - 1; i > mid; i--) {
-			if (t[i] > p) {
-				temp = t[i];
-				t[i] = p;
-				t[i + 1] = temp;
-			}
-		}
-
-		return right;
-
-		// choisir le premier �l�ment comme pivot
-		// pour chaque case suivante i de left+1 � right{
-		// si l'�l�ment courant doit aller dans la partie gris�e
-		// agrandir la partie gris�e, en �changeant les cases k+1 et i
-		// }
-		// mettre le pivot � la fin de la partie gris�e
-		// retourner la poistion de l'extr�mit� droite de la partie gris�e
-
+		t[left] = t[k];
+		t[k] = pivot;
+		return k;
 	}
 
 	// ------------------------------------------------------------
@@ -68,4 +45,5 @@ public class Quicksort {
 	public static void quickSort(int[] t) {
 		quickSort(t, 0, t.length - 1);
 	}
+
 }
