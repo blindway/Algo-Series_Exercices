@@ -22,7 +22,7 @@ public class ExternalSorting {
     String sa = fa.readLine(); String saPrev = sa;
     String sb = fb.readLine(); String sbPrev = sb;
     while (sa != null || sb != null) {
-      // if needed, go to the next two monotone squences
+      // if needed, go to the next two monotone sequences
       if (!isMonotone(sa, saPrev) && !isMonotone(sb, sbPrev)) {
         saPrev = sa; sbPrev = sb;
       }
@@ -75,7 +75,7 @@ public class ExternalSorting {
 	    
 	    // fermeture des fichiers
 	    fa.close(); fb.close(); fc.close();
-	    
+	    System.out.println(linePrev);
 	    return monotonieCount;
 	    
 	  }
@@ -91,6 +91,7 @@ public class ExternalSorting {
         merge(tmp1, tmp2, filename);
         monotoneSeq = split(filename, tmp1, tmp2);
       }
+      System.out.println(monotoneSeq);
     } catch (IOException e) {
       System.out.println(e);
     }
