@@ -9,6 +9,7 @@ public class IntStack {
 		this(10);
 	}
 
+	// PRE: cap must be > 0
 	public IntStack(int cap) {
 		buf = new int[cap];
 		top = -1;
@@ -18,16 +19,19 @@ public class IntStack {
 		return top == -1;
 	}
 
+	// PRE: stack must not be empty
 	public int top() {
-		return buf[top - 1];
+		return buf[top];
 	}
 
+	// PRE: stack must not be empty
 	public int pop() {
 		int a = buf[top];
 		top--;
 		return a;
 	}
 
+	// PRE: x must be a int
 	public void push(int x) {
 		checkSize();
 		top++;

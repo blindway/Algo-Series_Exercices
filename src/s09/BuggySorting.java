@@ -1,6 +1,54 @@
 package s09;
 
+import java.util.HashMap;
+
 public class BuggySorting {
+
+	static boolean isSortingResultCorrect(int[] givenInput, int[] observedOutput) {
+
+		int temp = observedOutput[0];
+		boolean test;
+
+		HashMap<Integer, Integer> tab = new HashMap();
+
+		if (givenInput.length != observedOutput.length) {
+			return false;
+		}
+
+		for (int i = 0; i < observedOutput.length; i++) {
+			if (temp < observedOutput[i]) {
+				return false;
+			}
+			temp = observedOutput[i];
+		}
+
+		for (int i = 0; i < givenInput.length; i++) {
+
+			if (tab.containsKey(givenInput[i])) {
+				tab.replace(givenInput[i], tab.get(givenInput[i]++));
+			} else {
+				tab.put(givenInput[i], 1);
+			}
+		}
+
+		for (int i = 0; i < observedOutput.length; i++) {
+
+			if (tab.containsKey(observedOutput[i])) {
+				tab.replace(observedOutput[i], tab.get(observedOutput[i]--));
+			} else {
+				tab.put(observedOutput[i], 1);
+			}
+		}
+
+		for (int i = 0; i < observedOutput.length; i++) {
+
+			if (tab.get(observedOutput[i]) != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private static int[] t;
 
 	// ------------------------------------------------------------
@@ -141,5 +189,15 @@ public class BuggySorting {
 	}
 	// ------------------------------------------------------------
 	
+<<<<<<< Updated upstream
+=======
+	public static void main(String[] args) {
+		int tab[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
+		int tab2[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
+		sort02(tab2);
+		
+		System.out.println(isSortingResultCorrect(tab, tab2));
+	}
+>>>>>>> Stashed changes
 	
 }
