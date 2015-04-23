@@ -19,7 +19,7 @@ public class IntStack {
 	}
 
 	public int top() {
-		return buf[top-1];
+		return buf[top - 1];
 	}
 
 	public int pop() {
