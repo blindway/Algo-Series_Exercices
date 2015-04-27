@@ -11,6 +11,7 @@ public class IntStack {
 
 	// PRE: cap must be > 0
 	public IntStack(int cap) {
+		assert(cap > 0);
 		buf = new int[cap];
 		top = -1;
 	}
@@ -21,17 +22,18 @@ public class IntStack {
 
 	// PRE: stack must not be empty
 	public int top() {
+		assert(!isEmpty());
 		return buf[top];
 	}
 
 	// PRE: stack must not be empty
 	public int pop() {
+		assert(!isEmpty());
 		int a = buf[top];
 		top--;
 		return a;
 	}
 
-	// PRE: x must be a int
 	public void push(int x) {
 		checkSize();
 		top++;

@@ -188,9 +188,7 @@ public class BuggySorting {
 		}
 	}
 	// ------------------------------------------------------------
-	
-<<<<<<< Updated upstream
-=======
+
 	public static void main(String[] args) {
 		int tab[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
 		int tab2[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
@@ -198,6 +196,5 @@ public class BuggySorting {
 		
 		System.out.println(isSortingResultCorrect(tab, tab2));
 	}
->>>>>>> Stashed changes
 	
 }
