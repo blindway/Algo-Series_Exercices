@@ -9,12 +9,15 @@ public class BuggySorting {
 		int temp = observedOutput[0];
 		boolean test;
 
+		// creation HashMap
 		HashMap<Integer, Integer> tab = new HashMap();
 
+		// Teste si les deux tableaux ont la même taille.
 		if (givenInput.length != observedOutput.length) {
 			return false;
 		}
 
+		// Verifie que les elements du tableau de sortie sont dans l'ordre.
 		for (int i = 0; i < observedOutput.length; i++) {
 			if (temp < observedOutput[i]) {
 				return false;
@@ -22,6 +25,8 @@ public class BuggySorting {
 			temp = observedOutput[i];
 		}
 
+		// Verifie combien de fois apparait un même chiffre, pour chaque element
+		// du tableau.
 		for (int i = 0; i < givenInput.length; i++) {
 
 			if (tab.containsKey(givenInput[i])) {
@@ -31,6 +36,8 @@ public class BuggySorting {
 			}
 		}
 
+		// diminue dans la hashmap chaque fois qu'un chiffre contenu comme clé
+		// apparait dans le tableau de sortie.
 		for (int i = 0; i < observedOutput.length; i++) {
 
 			if (tab.containsKey(observedOutput[i])) {
@@ -40,6 +47,7 @@ public class BuggySorting {
 			}
 		}
 
+		// Verifie que la hashmap contient que des valeurs à 0 pour chaque clés.
 		for (int i = 0; i < observedOutput.length; i++) {
 
 			if (tab.get(observedOutput[i]) != 0) {
@@ -187,14 +195,15 @@ public class BuggySorting {
 			a[i] = t;
 		}
 	}
+
 	// ------------------------------------------------------------
 
 	public static void main(String[] args) {
 		int tab[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
 		int tab2[] = { 5, 1, 4, 1, 4, 5, 1, 2, 8, 2 };
 		sort02(tab2);
-		
+
 		System.out.println(isSortingResultCorrect(tab, tab2));
 	}
-	
+
 }
