@@ -43,7 +43,19 @@ public class Crypto {
 		BufferedReader fm = new BufferedReader(new FileReader(MsgFile));
 		BufferedReader fk = new BufferedReader(new FileReader(KeyFile));
 		PrintWriter fo = new PrintWriter(new FileWriter(outFile));
-		// TODO A COMPLETER...
+		System.out.println("Decrypt");
+		String s;
+		s = fk.readLine();
+		long e = Long.parseLong(s);
+		s = fk.readLine();
+		long n = Long.parseLong(s);
+		fk.close();
+		int r = fm.read();
+		while (r != -1) {
+			long c = (long) r;
+			fo.println(decode(c, e, n));
+			r = fm.read();
+		}
 	}
 
 	// ------------------------------------------------------------
@@ -75,7 +87,6 @@ public class Crypto {
 
 	// ------------------------------------------------------------
 	public static boolean isPrime(long n) {
-
 		if (n <= 1)
 			return false;
 		for (int i = 2; i * i <= n; i++) {
@@ -84,7 +95,6 @@ public class Crypto {
 			i++;
 		}
 		return true;
-
 	}
 
 	// ------------------------------------------------------------
