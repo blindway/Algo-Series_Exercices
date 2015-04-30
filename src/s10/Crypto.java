@@ -106,7 +106,7 @@ public class Crypto {
 	// ------------------------------------------------------------
 	// PRE: kth > 0
 	public static long getKthPrimeNb(int kth) {
-		int compteur = 0;
+		int compteur = 1;
 		int result = 0;
 
 		for (int i = 0; compteur <= kth; i++) {
