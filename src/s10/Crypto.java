@@ -50,11 +50,11 @@ public class Crypto {
 		s = fk.readLine();
 		long n = Long.parseLong(s);
 		fk.close();
-		int r = fm.read(); // reads one character
-		while (r != -1) {
-			long c = (long) r;
+		String r = fm.readLine(); // reads one character
+		while (r != null) {
+			long c = Long.parseLong(r);
 			fo.println(decode(c, e, n));
-			r = fm.read(); // reads one character
+			r = fm.readLine(); // reads one character
 		}
 		fm.close();
 		fo.close();
