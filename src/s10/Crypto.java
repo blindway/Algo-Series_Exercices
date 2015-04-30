@@ -43,19 +43,22 @@ public class Crypto {
 		BufferedReader fm = new BufferedReader(new FileReader(MsgFile));
 		BufferedReader fk = new BufferedReader(new FileReader(KeyFile));
 		PrintWriter fo = new PrintWriter(new FileWriter(outFile));
-		System.out.println("Decrypt");
+
 		String s;
 		s = fk.readLine();
 		long e = Long.parseLong(s);
 		s = fk.readLine();
 		long n = Long.parseLong(s);
 		fk.close();
-		int r = fm.read();
+		int r = fm.read(); // reads one character
 		while (r != -1) {
 			long c = (long) r;
 			fo.println(decode(c, e, n));
-			r = fm.read();
+			r = fm.read(); // reads one character
 		}
+		fm.close();
+		fo.close();
+
 	}
 
 	// ------------------------------------------------------------
@@ -68,10 +71,10 @@ public class Crypto {
 	public static void createKeys(int code1, int code2, String publicKeyFile,
 			String privateKeyFile) throws IOException {
 		long p = getKthPrimeNb(code1);
-		long q = 0; // TODO A COMPLETER...
-		long n = 0; // TODO A COMPLETER...
-		long nPrime = 0; // TODO A COMPLETER...
-		long e = 0; // TODO A COMPLETER...
+		long q = getKthPrimeNb(code2);
+		long n = p*q;
+		long nPrime = (p-1)*(q-1);
+		long e = getRelativePrime(nPrime);
 		long d = multInverse(e, nPrime);
 		PrintWriter fa = new PrintWriter(new FileWriter(publicKeyFile));
 		PrintWriter fb = new PrintWriter(new FileWriter(privateKeyFile));
@@ -87,21 +90,32 @@ public class Crypto {
 
 	// ------------------------------------------------------------
 	public static boolean isPrime(long n) {
-		if (n <= 1)
+
+		if (n <= 1) {
 			return false;
-		for (int i = 2; i * i <= n; i++) {
-			if (n % i == 0)
+		}
+		for (int i = 2; i <= n / 2; i++) {
+			if (n != i && n % i == 0) {
 				return false;
-			i++;
+			}
 		}
 		return true;
+
 	}
 
 	// ------------------------------------------------------------
 	// PRE: kth > 0
 	public static long getKthPrimeNb(int kth) {
-		// TODO A COMPLETER...
-		return -1;
+		int compteur = 0;
+		int result = 0;
+
+		for (int i = 0; compteur <= kth; i++) {
+			if (isPrime(i)) {
+				compteur++;
+				result = i;
+			}
+		}
+		return result;
 	}
 
 	// ------------------------------------------------------------
@@ -171,6 +185,7 @@ public class Crypto {
 
 	// ------------------------------------------------------------
 	public static void main(String[] args) {
+		System.out.println(getKthPrimeNb(0));
 		for (int i = 1; i < 50; i++)
 			System.out.print(" " + getKthPrimeNb(i));
 		System.out.println();
