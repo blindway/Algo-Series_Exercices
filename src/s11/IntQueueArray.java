@@ -1,8 +1,11 @@
 package s11;
+import java.util.Deque;
 import java.util.Random;
+
+import sun.misc.Queue;
 // ======================================================================
 public class IntQueueArray {
-  private int [] buffer = new int[10];
+  private int [] buffer = new int[5];
   private int    front=1;
   private int    back=0;
   private int    size=0;
@@ -27,9 +30,10 @@ public class IntQueueArray {
   // ------------------------------
   // PRE: !isEmpty()
   public int     dequeue   ()        {
-    front = (front+1)%buffer.length;
+    int aux = buffer[front];
+	  front = (front+1)%buffer.length;
     size--;
-    return front;
+    return aux;
   }
   // ------------------------------
   private void checkSize() {
@@ -56,6 +60,29 @@ public class IntQueueArray {
   
   // ======================================================================
   public static void main(String [] args) {
+	  
+	    IntQueueArray t = new IntQueueArray();
+	    
+	    t.enqueue(1);
+	    t.enqueue(2);
+	    t.enqueue(3);
+	    t.enqueue(4);
+	    t.enqueue(5);
+	    t.enqueue(6);
+	    t.enqueue(7);
+
+
+
+
+	    System.out.println(t.dequeue());
+	    System.out.println(t.dequeue());
+	    System.out.println(t.dequeue());
+	    System.out.println(t.dequeue());
+
+
+	  
+	  
+	  
     int n=1000000;
     if (args.length == 1)
       n = Integer.parseInt(args[0]);

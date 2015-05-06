@@ -15,7 +15,13 @@ public class IntQueueChained {
   public    IntQueueChained()        {}
   // --------------------------
   public void enqueue (int elt) {
-    // TODO - A COMPLETER...
+    if(isEmpty){
+    	front
+    	
+    }
+    else{
+    	
+    }
   }
   // --------------------------
   public boolean isEmpty() {
