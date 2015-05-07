@@ -110,19 +110,19 @@ public class QueueChained<E> {
 			}
 		}
 		System.out.println("Test passed successfully");
-		demo(2);
+		demo(10);
 	}
 
 	static void demo(int n) {
 		QueueChained f;
 		int i, sum = 0;
 		f = new QueueChained();
-		for (i = 0; i < n; i++) {
+		for (i = 0; i < n; i++)
 			f.enqueue(i);
-			while (!f.isEmpty())
-				sum = sum + (int)f.dequeue();
-			System.out.println(sum);
-		}
+		while (!f.isEmpty())
+			sum = sum + (int) f.dequeue();
+		System.out.println(sum);
+
 	}
 
 	// ------------------------------------------------------------
