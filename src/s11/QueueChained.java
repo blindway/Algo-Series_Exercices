@@ -81,7 +81,7 @@ public class QueueChained<E> {
 		long seed = r.nextInt(1000);
 		r.setSeed(seed);
 		System.out.println("Using seed " + seed);
-		IntQueueChained q = new IntQueueChained();
+		QueueChained q = new QueueChained();
 		int m = 0;
 		int k = 0;
 		int p = 0;
@@ -101,7 +101,7 @@ public class QueueChained<E> {
 				} else {
 					ok(!q.isEmpty(), "should be non-empty " + m + " " + k + " "
 							+ p + "\n");
-					int e = q.dequeue();
+					int e = (int) q.dequeue();
 					// System.out.print("r("+e+")");
 					m--;
 					ok(e == p + 1, "not FIFO " + m + " " + k + " " + p + "\n");
@@ -110,6 +110,19 @@ public class QueueChained<E> {
 			}
 		}
 		System.out.println("Test passed successfully");
+		demo(2);
+	}
+
+	static void demo(int n) {
+		QueueChained f;
+		int i, sum = 0;
+		f = new QueueChained();
+		for (i = 0; i < n; i++) {
+			f.enqueue(i);
+			while (!f.isEmpty())
+				sum = sum + (int)f.dequeue();
+			System.out.println(sum);
+		}
 	}
 
 	// ------------------------------------------------------------
