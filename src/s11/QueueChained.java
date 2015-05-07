@@ -25,7 +25,7 @@ public class QueueChained<E> {
 	// --------------------------
 	public void enqueue(E elt) {
 
-		QueueNode chainz = new QueueNode(elt);
+		QueueNode<E> chainz = new QueueNode<E>(elt);
 
 		if (isEmpty()) {
 			back = chainz;
@@ -63,7 +63,7 @@ public class QueueChained<E> {
 	// --------------------------
 	public String toString() {
 		String res = "";
-		QueueNode c = front;
+		QueueNode<E> c = front;
 		while (c != null) {
 			res += c.elt + " ";
 			c = c.prev;
