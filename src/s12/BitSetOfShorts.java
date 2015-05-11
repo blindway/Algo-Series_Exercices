@@ -7,11 +7,24 @@ public class BitSetOfShorts {
   static final short HIGH = Short.MAX_VALUE;
   // ------------------------------------------------------------
   static int   indexFromElt(short e) {
-    return 0; // TODO - A COMPLETER...  
-  }
-  static short eltFromIndex(int i)   {
-    return 0; // TODO - A COMPLETER...  
-  }
+	    if (e < 0) {
+	    	int val = Math.abs(e);
+			return Math.abs((val*2)-1);
+		}
+	    else{
+	    	return e*2;
+	    }
+	  }
+	  static short eltFromIndex(int i)   {
+		  
+		  if(i % 2 == 0){
+			  return (short) (i/2);
+		  }
+		  else{
+			  return (short) (((i+1)/2)*-1);
+		  }
+		  
+	  }
   // ------------------------------------------------------------
   public BitSetOfShorts ()  { 
     bs = new BitSet(); // or: new BitSet(1 + HIGH - LOW); 
