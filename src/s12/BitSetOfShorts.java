@@ -7,48 +7,48 @@ public class BitSetOfShorts {
   static final short HIGH = Short.MAX_VALUE;
   // ------------------------------------------------------------
   static int   indexFromElt(short e) {
-	    if (e < 0) {
-	    	int val = Math.abs(e);
-			return Math.abs((val*2)-1);
-		}
-	    else{
-	    	return e*2;
-	    }
+    if (e < 0) {
+    	int val = Math.abs(e);
+		return Math.abs((val*2)-1);
+	}
+    else{
+    	return e*2;
+    }
+  }
+  static short eltFromIndex(int i)   {
+	  
+	  if(i % 2 == 0){
+		  return (short) (i/2);
 	  }
-	  static short eltFromIndex(int i)   {
-		  
-		  if(i % 2 == 0){
-			  return (short) (i/2);
-		  }
-		  else{
-			  return (short) (((i+1)/2)*-1);
-		  }
-		  
+	  else{
+		  return (short) (((i+1)/2)*-1);
 	  }
+	  
+  }
   // ------------------------------------------------------------
   public BitSetOfShorts ()  { 
     bs = new BitSet(); // or: new BitSet(1 + HIGH - LOW); 
   }
   // ------------------------------------------------------------
   public void    add     (short e) {
-    // TODO - A COMPLETER...
+    bs.set(indexFromElt(e), true);
   } 
   public void    remove  (short e) {
-     // TODO - A COMPLETER...
+	bs.set(indexFromElt(e), false);
   } 
   public boolean contains(short e) {
-     return false; // TODO - A COMPLETER...
+     return bs.get(indexFromElt(e));
   } 
   // ------------------------------------------------------------
   public void    union       (BitSetOfShorts s) {
-    // TODO - A COMPLETER...
+   bs.and(s.bs);
   } 
   public void    intersection(BitSetOfShorts s) {
-    // TODO - A COMPLETER...
+    bs.or(s.bs);
   } 
   // ------------------------------------------------------------
   public int     size() {
-    return 0; // TODO - A COMPLETER...
+	return bs.cardinality();
   } 
   // ------------------------------------------------------------
   public boolean isEmpty() { return bs.length() == 0;}
@@ -66,7 +66,10 @@ public class BitSetOfShorts {
   // ------------------------------------------------------------
   // ------------------------------------------------------------
   public static void main(String [] args) {
-    BitSetOfShorts a = new BitSetOfShorts();
+	  
+	  System.out.println(indexFromElt((short) 3));
+	  
+    /*BitSetOfShorts a = new BitSetOfShorts();
     BitSetOfShorts b = new BitSetOfShorts();
     short [] ta = {-3, 5, 6, -3, 9, 9};
     short [] tb = {6, 7, -2, -3};
@@ -80,6 +83,6 @@ public class BitSetOfShorts {
       System.out.println(""+b+ b.size());
     }
     a.union(b);
-    System.out.println(""+a+ a.size());
+    System.out.println(""+a+ a.size());*/
   }
 }
