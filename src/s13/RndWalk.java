@@ -18,7 +18,20 @@ public class RndWalk {
     for (int i=0; i<nbOfExperiments; i++) {
       x=0; nbOfSteps=0;
       while(x!=pointToReach) {
-        // TODO - A COMPLETER...
+        
+    	  int e = r.nextInt(100);
+    	  
+    	  //droite
+    	  if(e < 55){
+    		  
+    		  x++;
+    	  }
+    	  //gauche
+    	  else if(x != 0){
+    		  
+    		  x--;
+    	  }
+    	  
         nbOfSteps++;
       }
       total+= nbOfSteps;
