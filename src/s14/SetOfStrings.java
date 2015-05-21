@@ -38,12 +38,36 @@ public class SetOfStrings {
 	// returns the index where element e is stored,
 	// or, if absent, the index where e should be stored
 	int targetIndex(String e) {
-		int result = 19;
-		for (int i = 0; i < e.length(); i++) {
-			int c = (int) e.charAt(i);
-			result = result * 31 + c;
-		}
-		return (int) Math.abs(result) % crtSize;
+		
+		int tempIndex = hashString(e);
+
+			
+			for (int i = 0; i < total[tempIndex]; i++) {
+				
+				if(!busy.get(tempIndex + i)){
+					
+					return tempIndex + i;
+					
+				}
+				else{
+					
+					if(elt[tempIndex + i] == e){
+						
+						
+						
+					}
+					
+				}
+				
+			}
+			
+			
+		
+		
+		
+		
+		
+		return 42;
 	}
 
 	public void add(String e) {
@@ -116,7 +140,7 @@ public class SetOfStrings {
 		String b = "defhijk";
 		String c = "hahaha";
 		SetOfStrings s = new SetOfStrings();
-		
+
 		s.add(a);
 		s.add(b);
 		s.remove(a);
