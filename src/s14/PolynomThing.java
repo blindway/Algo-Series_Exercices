@@ -18,23 +18,24 @@ public class PolynomThing {
 
 		int result = 19;
 
-		/*
-		 * char letter;
-		 * 
-		 * letter = name.charAt(0); if(letter>='a' && letter<= 'z')
-		 * System.out.println((int)letter - 'a'+1);
-		 * 
-		 * return ((int) Math.abs(name.charAt(0)) % degree());
-		 */
-
+		// each char
 		for (int i = 0; i < name.length(); i++) {
-
 			int c = (int) name.charAt(i);
 			result = result * 31 + c;
-
 		}
 
-		return ((int) Math.abs(result) % degree());
+		// boolean
+		int c = (isReducible ? 1 : 0);
+		result = result * 31 + c;
+
+		// tab
+		for (int i = 0; i < degree(); i++) {
+			c = (int) Double.doubleToRawLongBits(coef[i]);
+			result = result * 31 + c;
+		}
+
+		return Math.abs(result);
+		//return ((int) Math.abs(result) % degree());
 
 	}
 
