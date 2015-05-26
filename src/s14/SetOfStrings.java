@@ -38,17 +38,13 @@ public class SetOfStrings {
 	// returns the index where element e is stored,
 	// or, if absent, the index where e should be stored
 	int targetIndex(String e) {
-		int result = 19;
-		for (int i = 0; i < e.length(); i++) {
-			int c = (int) e.charAt(i);
-			result = result * 31 + c;
-		}
-		return (int) Math.abs(result) % crtSize;
+		return (int) Math.abs(hashString(e)) % crtSize;
 	}
 
 	public void add(String e) {
 		if (crtSize * 2 >= capacity())
 			doubleTable();
+
 		// TODO - A COMPLETER
 	}
 
@@ -116,7 +112,7 @@ public class SetOfStrings {
 		String b = "defhijk";
 		String c = "hahaha";
 		SetOfStrings s = new SetOfStrings();
-		
+		System.out.println();
 		s.add(a);
 		s.add(b);
 		s.remove(a);
