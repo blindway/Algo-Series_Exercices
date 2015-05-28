@@ -27,11 +27,21 @@ public class GridPath {
 		int n = t.length, m = t[0].length;
 		int[][] minPathSol = new int[n][m];
 		minPathSol[0][0] = t[0][0];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				// TODO finish this shit!!!
-			}
+		boolean[][] fromWhere = new boolean[n][m];
+
+		for (int i = 1; i < n; i++) {
+			// première colonne
+			minPathSol[i][0] = minPathSol[i - 1][0] + t[i][0];
 		}
+
+		for (int j = 1; j < m; j++) {
+			// première ligne
+			minPathSol[0][j] = minPathSol[0][j - 1] + t[0][j];
+
+		}
+
+		System.out.println(minPathSol[0][2]);
+		
 		return minPathSol[n - 1][m - 1];
 	}
 
