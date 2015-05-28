@@ -29,7 +29,13 @@ public class GridPath {
 		minPathSol[0][0] = t[0][0];
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				// TODO finish this shit!!!
+				//comparer cellule du dessu et cellule à gauche
+				int up = minPathSol[i-1][j];
+				int left = minPathSol [i][j-1];
+				if(up<left) // alors on prend up
+					minPathSol[i][j] = up + t[i][j];
+				else	//alors o prend left
+					minPathSol[i][j] = left + t[i][j];
 			}
 		}
 		return minPathSol[n - 1][m - 1];
