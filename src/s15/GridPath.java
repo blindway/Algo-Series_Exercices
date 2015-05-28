@@ -27,24 +27,11 @@ public class GridPath {
 		int n = t.length, m = t[0].length;
 		int[][] minPathSol = new int[n][m];
 		minPathSol[0][0] = t[0][0];
-<<<<<<< HEAD
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				//comparer cellule du dessu et cellule � gauche
-				int up = minPathSol[i-1][j];
-				int left = minPathSol [i][j-1];
-				if(up<left) // alors on prend up
-					minPathSol[i][j] = up + t[i][j];
-				else	//alors o prend left
-					minPathSol[i][j] = left + t[i][j];
-			}
-=======
 		boolean[][] fromWhere = new boolean[n][m];
 
 		// première colonne
 		for (int i = 1; i < n; i++) {
 			minPathSol[i][0] = minPathSol[i - 1][0] + t[i][0];
->>>>>>> origin/master
 		}
 
 		// première ligne
