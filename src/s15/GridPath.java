@@ -47,7 +47,7 @@ public class GridPath {
 				if (up < left) // alors on prend up
 					minPathSol[i][j] = up + t[i][j];
 				else
-					// alors o prend left
+					// alors on prend left
 					minPathSol[i][j] = left + t[i][j];
 			}
 		}

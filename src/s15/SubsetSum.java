@@ -18,7 +18,7 @@ public class SubsetSum {
 	// ============================================================
 	public static boolean subsetSumDyn(int[] t, int k0) {
 		boolean[] sols = new boolean[k0 + 1]; // tableau de solutions
-												// intermédiaires rempli de
+												// intermediaires rempli de
 												// false
 		sols[0] = true;
 		for (int i = 0; i < t.length; i++) {
