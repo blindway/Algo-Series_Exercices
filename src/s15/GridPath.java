@@ -41,20 +41,30 @@ public class GridPath {
 =======
 		boolean[][] fromWhere = new boolean[n][m];
 
+		// première colonne
 		for (int i = 1; i < n; i++) {
-			// première colonne
 			minPathSol[i][0] = minPathSol[i - 1][0] + t[i][0];
 >>>>>>> origin/master
 		}
 
+		// première ligne
 		for (int j = 1; j < m; j++) {
-			// première ligne
 			minPathSol[0][j] = minPathSol[0][j - 1] + t[0][j];
-
 		}
 
-		System.out.println(minPathSol[0][2]);
-		
+		for (int i = 1; i < n; i++) {
+			for (int j = 1; j < m; j++) { //reste du tableau
+				// comparer cellule du dessus et cellule à gauche
+				int up = minPathSol[i - 1][j];
+				int left = minPathSol[i][j - 1];
+				if (up < left) // alors on prend up
+					minPathSol[i][j] = up + t[i][j];
+				else
+					// alors o prend left
+					minPathSol[i][j] = left + t[i][j];
+			}
+		}
+
 		return minPathSol[n - 1][m - 1];
 	}
 
