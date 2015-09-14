@@ -14,7 +14,7 @@ public class IntIntPtyQueue {
 	// ------------------------------------------------------------
 	// priorities will be in 0..theMaxPty
 	public IntIntPtyQueue(int theMaxPty) {
-		qt = new IntQueueChained[theMaxPty+1];
+		qt = new IntQueueChained[theMaxPty + 1];
 	}
 
 	// ------------------------------------------------------------
@@ -44,7 +44,7 @@ public class IntIntPtyQueue {
 	// PRE: ! isEmpty()
 	public int consultPty() {
 		int result = 0;
-		for (int i = 0; i <qt.length; i++) {
+		for (int i = 0; i < qt.length; i++) {
 			if (qt[i] != null && !qt[i].isEmpty()) {
 				result = i;
 				break;
