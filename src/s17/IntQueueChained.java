@@ -1,67 +1,77 @@
-package s11;
+package s17;
 
 import java.util.Random;
 
-// ======================================================================
-public class IntQueueArray {
-	private int[] buffer = new int[5];
-	private int front = 1;
-	private int back = 0;
-	private int size = 0;
+public class IntQueueChained {
+	// ======================================================================
+	static class QueueNode {
+		int elt;
+		QueueNode prev = null;
 
-	// ------------------------------
-	public IntQueueArray() {
-	}
-
-	// ------------------------------
-	public void enqueue(int elt) {
-		checkSize();
-		back++;
-		if (back == buffer.length)
-			back = 0;
-		buffer[back] = elt;
-		size++;
-	}
-
-	// ------------------------------
-	public boolean isEmpty() {
-		return size == 0;
-	}
-
-	// ------------------------------
-	// PRE: !isEmpty()
-	public int consult() {
-		return buffer[front];
-	}
-
-	// ------------------------------
-	// PRE: !isEmpty()
-	public int dequeue() {
-		int aux = buffer[front];
-		front = (front + 1) % buffer.length;
-		size--;
-		return aux;
-	}
-
-	// ------------------------------
-	private void checkSize() {
-		if (!(size < buffer.length)) {
-			int[] bufferTemp = new int[2 * size];
-			int index = 0;
-			for (int i = front; i < buffer.length; i++) {
-				bufferTemp[index] = buffer[i];
-				index++;
-			}
-			for (int i = 0; i < front; i++) {
-				bufferTemp[index] = buffer[i];
-				index++;
-			}
-			front = 0;
-			back = --index;
-			buffer = bufferTemp;
+		// ----------
+		QueueNode(int elt) {
+			this.elt = elt;
 		}
 	}
 
+	// ======================================================================
+	private QueueNode front;
+	private QueueNode back;
+
+	// ------------------------------
+	public IntQueueChained() {
+	}
+
+	// --------------------------
+	public void enqueue(int elt) {
+
+		QueueNode chainz = new QueueNode(elt);
+
+		if (isEmpty()) {
+			back = chainz;
+			front = chainz;
+		} else {
+			back.prev = chainz;
+			back = chainz;
+		}
+	}
+
+	// --------------------------
+	public boolean isEmpty() {
+		return back == null;
+	}
+
+	// --------------------------
+	// PRE : !isEmpty()
+	public int consult() {
+		return front.elt;
+	}
+
+	// --------------------------
+	// PRE : !isEmpty()
+	public int dequeue() {
+		int e = front.elt;
+		if (front == back) {
+			back = null;
+			front = null;
+		} else {
+			front = front.prev;
+		}
+		return e;
+	}
+
+	// --------------------------
+	public String toString() {
+		String res = "";
+		QueueNode c = front;
+		while (c != null) {
+			res += c.elt + " ";
+			c = c.prev;
+		}
+		return res;
+	}
+
+	// ======================================================================
 	// ======================================================================
 	public static void main(String[] args) {
 		int n = 1000000;
@@ -71,7 +81,7 @@ public class IntQueueArray {
 		long seed = r.nextInt(1000);
 		r.setSeed(seed);
 		System.out.println("Using seed " + seed);
-		IntQueueArray q = new IntQueueArray();
+		IntQueueChained q = new IntQueueChained();
 		int m = 0;
 		int k = 0;
 		int p = 0;

@@ -26,6 +26,7 @@ public class RndTriangle {
 					* (ptn1.getY() - ptn2.getY()));
 			cmpt++;
 		}
+		System.out.println("la surface moyenne d'un triangle de coordonnées tirées entre 0 et 1 est de:");
 		return rslt / nbOfExperiments;
 	}
 }
